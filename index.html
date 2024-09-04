@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LKC COATINGS</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/product.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- JQUERY JS -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <div id="header"></div>
+    <div id="home"></div>
+    <div id="about"></div>
+    <div id="product"></div>
+    <div id="contact"></div>
+    <div id="productModal"></div>
+
+    <!-- Includers -->
+    <script>
+      $(function () {
+        $("#header").load("partials/header.html", function () {
+          // Initialize Bootstrap components if needed
+          var offcanvasElements = document.querySelectorAll(
+            '[data-bs-toggle="offcanvas"]'
+          );
+          offcanvasElements.forEach(function (element) {
+            new bootstrap.Offcanvas(element);
+          });
+        });
+
+        $("#home").load("pages/home.html", function () {});
+        $("#about").load("pages/about.html", function () {});
+        $("#contact").load("pages/contact.html", function () {
+          $.getScript("assets/js/main.js");
+        });
+        $("#product").load("pages/product.html", function () {
+          $.getScript("assets/js/product.js");
+          $("#productModal").load("partials/productmodal.html", function () {
+            // This setup is correct.
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
